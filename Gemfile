@@ -4,13 +4,13 @@ gem 'activerecord', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 
 gem 'sinatra'
-gem rack (>= 1.0)
+gem 'rack' 
 gem 'sqlite3'
 gem 'tux'
 gem 'rake'
 gem 'require_all'
 gem 'shotgun'
-gem 'json', '>=1.8.3'
+gem 'json'
 
 group :test do
   gem 'rspec'
