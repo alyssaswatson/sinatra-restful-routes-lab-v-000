@@ -4,6 +4,7 @@ gem 'activerecord', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 
 gem 'sinatra'
+gem rack (>= 1.0)
 gem 'sqlite3'
 gem 'tux'
 gem 'rake'
@@ -18,4 +19,5 @@ group :test do
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+  gem json (>= 1.8.3)
 end
