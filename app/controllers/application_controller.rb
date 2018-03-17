@@ -1,29 +1,25 @@
+
+require './config/environment'
+
 class ApplicationController < Sinatra::Base
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
-  end
+  # register Sinatra::ActiveRecordExtension
+  set :views, Proc.new { File.join(root, "../views/") }
 
-  get '/' do
-    erb :index
-  end
-
-  get '/recipes/new' do
+  get '/recipes/new' do #loads new form
     erb :new
   end
 
-  get '/recipes' do
-    #binding.pry
+  get '/recipes' do #loads index page
     @recipes = Recipe.all
     erb :index
   end
 
-  get '/recipes/:id' do
-    @recipe = Recipe.all.find_by_id(params[:id])
+  get '/recipes/:id' do  #loads show page
+    @recipe = Recipe.find_by_id(params[:id])
     erb :show
   end
 
-  get '/recipes/:id/edit' do  #load edit form
+  get '/recipes/:id/edit' do #loads edit form
     @recipe = Recipe.find_by_id(params[:id])
     erb :edit
   end
@@ -43,10 +39,10 @@ class ApplicationController < Sinatra::Base
   end
 
   delete '/recipes/:id/delete' do #delete action
-    binding.pry
-    "hello"
-    #@recipe = Recipes.find_by_id(params[:id])
-    #@recipe.delete
-    #redirect to '/recipes'
-  end
+  @recipe = Recipe.find_by_id(params[:id])
+  @recipe.delete
+  redirect to '/recipes'
+end
+
+
 end
